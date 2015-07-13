@@ -7,9 +7,11 @@ toRedact = gets.chomp
 words = text.downcase.split(' ')
 redactWords = toRedact.downcase.split(' ')
 
+result = ''
+
 words.each do |word|
     shouldRedact = false
-    
+
     redactWords.each do |redact|
         if word == redact
             shouldRedact = true
@@ -18,10 +20,10 @@ words.each do |word|
     end
 
     if shouldRedact
-        print "REDACT "
+        result += "REDACT "
     else
-        print word + ' '
+        result += (word + ' ')
     end
 end
+puts result
 puts
-
