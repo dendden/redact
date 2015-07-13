@@ -1,16 +1,26 @@
 puts "Text:"
 text = gets.chomp
 
-puts "Word to redact:"
-redact = gets.chomp
+puts "Words to redact (separated by whitespace):"
+toRedact = gets.chomp
 
-words = text.downcase.split(" ")
+words = text.downcase.split(' ')
+redactWords = toRedact.downcase.split(' ')
 
 words.each do |word|
-    if word == redact
-        print "REDACTED "
+    shouldRedact = false
+    
+    redactWords.each do |redact|
+        if word == redact
+            shouldRedact = true
+            break
+        end
+    end
+
+    if shouldRedact
+        print "REDACT "
     else
-        print word + " "
+        print word + ' '
     end
 end
 puts
